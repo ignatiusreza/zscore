@@ -1,8 +1,8 @@
-import React from "react";
-import Hello from "hello";
+import React from 'react';
+import Hello from 'hello';
 
-describe("Hello", () => {
-  it("works for testing react component", () => {
+describe('Hello', () => {
+  it('works for testing react component', () => {
     expect(<Hello />).toMatchSnapshot();
   });
 });
