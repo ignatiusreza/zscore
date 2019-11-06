@@ -1,5 +1,20 @@
 inherit_from: ../.rubocop.yml
 
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+  FunctionalMethods:
+    - let
+    - subject
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
