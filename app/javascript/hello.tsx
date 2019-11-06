@@ -1,10 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
 
-const Hello = props => <div>Hello {props.name}!</div>;
+interface HelloProps {
+  name?: string;
+}
+
+const Hello: React.FC<HelloProps> = props => <div>Hello {props.name}!</div>;
 
 Hello.defaultProps = {
-  name: "David"
+  name: 'David',
 };
 
 export default Hello;
