@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint:prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,json,yml}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,yml}\"",
     "test": "jest"
   },
   "dependencies": {
@@ -11,8 +14,7 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.3",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
@@ -22,7 +24,16 @@
     "typescript": "^3.6.4"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.22",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
+    "prettier": "^1.18.2",
     "webpack-dev-server": "^3.9.0"
   },
   "jest": {
