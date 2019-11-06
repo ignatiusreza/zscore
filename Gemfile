@@ -32,11 +32,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'active_interaction'
 gem 'descriptive_statistics'
+gem 'responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
+  gem 'json_spec'
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop', '~> 0.76.0', require: false
   gem 'rubocop-performance'
