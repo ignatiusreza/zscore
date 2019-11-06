@@ -1,6 +1,10 @@
 {
   "name": "zscore",
+  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.7.0",
     "@rails/actioncable": "^6.0.0-alpha",
@@ -17,8 +21,22 @@
     "turbolinks": "^5.2.0",
     "typescript": "^3.6.4"
   },
-  "version": "0.1.0",
   "devDependencies": {
+    "jest": "^24.9.0",
     "webpack-dev-server": "^3.9.0"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/app/javascript",
+      "<rootDir>/node_modules"
+    ],
+    "testMatch": [
+      "**/*_spec.[tj]s?(x)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "app/javascript/**/*.[tj]s?(x)"
+    ],
+    "coverageDirectory": "spec/coverage/javascript"
   }
 }
