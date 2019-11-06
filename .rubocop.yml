@@ -29,3 +29,9 @@ Style/BlockDelimiters:
 
 Style/MultilineTernaryOperator:
   Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
