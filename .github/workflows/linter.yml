@@ -1,0 +1,33 @@
+name: Linter
+
+on: [push]
+
+jobs:
+  rubocop:
+    name: RuboCop
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: [2.6.x]
+        bundler-version: [2.0.1]
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+
+      - name: Installing Native Dependencies
+        run: |
+          sudo apt install libsqlite3-dev
+
+      - name: Bundle install
+        run: |
+          gem install bundler --version=${{ matrix.bundler-version }}
+          bundle install
+
+      - name: RuboCop
+        run: rubocop
