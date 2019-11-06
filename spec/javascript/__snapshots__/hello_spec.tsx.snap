@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hello works for testing react component 1`] = `
+<Hello
+  name="David"
+/>
+`;
