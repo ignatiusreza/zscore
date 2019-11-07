@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   namespace :api do
     resource :detect, only: %i[create]
   end
+
+  root to: 'home#show'
 end
