@@ -26,10 +26,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Installing Native Dependencies
-        run: |
-          sudo apt install libsqlite3-dev
-
       - name: Bundle install
         run: |
           gem install bundler --version=${{ matrix.bundler-version }}
