@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "lint:eslint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint:prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,json,yml}\"",
+    "lint:prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,css,json,yml}\"",
+    "lint:stylelint": "stylelint app/**/*.css",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,yml}\"",
     "test": "jest"
   },
@@ -33,6 +34,9 @@
     "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "stylelint": "^11.1.1",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-standard": "^19.0.0",
     "ts-jest": "^24.1.0",
     "webpack-dev-server": "^3.9.0"
   },
