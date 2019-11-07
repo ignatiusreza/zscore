@@ -9,6 +9,7 @@
     "lib": ["es6", "dom"],
     "module": "es6",
     "moduleResolution": "node",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "sourceMap": true,
     "target": "es5",
     "jsx": "react"

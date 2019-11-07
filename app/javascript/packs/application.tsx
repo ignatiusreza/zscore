@@ -3,8 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import './application.css';
+
 require('@rails/ujs').start();
-require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
 
@@ -14,3 +15,9 @@ require('channels');
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Hello from 'hello';
+
+ReactDOM.render(<Hello />, document.getElementById('react-root'));
