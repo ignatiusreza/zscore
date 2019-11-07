@@ -1,0 +1,37 @@
+.container {
+  padding: 20px;
+  width: 100%;
+}
+
+.chart {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.grid {
+  stroke: #ccc;
+  stroke-dasharray: none;
+  stroke-width: 1;
+}
+
+.labels {
+  font-size: 6px;
+}
+
+.x-labels {
+  transform: translate3d(0, 8px, 0);
+  text-anchor: middle;
+}
+
+.y-labels {
+  transform: translate3d(-4px, 2px, 0);
+  text-anchor: end;
+}
+
+.line {
+  fill: none;
+  stroke: #0074d9;
+  stroke-width: 0.5;
+}

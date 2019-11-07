@@ -18,6 +18,6 @@ require('channels');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from 'hello';
+import Root from 'routes';
 
-ReactDOM.render(<Hello />, document.getElementById('react-root'));
+ReactDOM.render(<Root />, document.getElementById('react-root'));
