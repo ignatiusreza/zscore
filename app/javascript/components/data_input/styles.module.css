@@ -2,6 +2,14 @@
   padding: 40px;
 }
 
-.threshold {
+.split {
+  @apply flex;
+}
+
+.split > label {
   @apply max-w-xs;
+}
+
+.threshold {
+  @apply mr-6;
 }

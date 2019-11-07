@@ -5,12 +5,16 @@
 class DetectIrregularitiesInteraction < ApplicationInteraction
   array :data do integer end
   float :threshold
+  float :window
 
   validates :threshold, numericality: { greater_than: 0 }
+  validates :window, numericality: { greater_than: 0 }
 
   def execute
-    data.map { |entry, index|
-      z_score(entry, data[0...index]).abs > threshold ? 1 : 0
+    data.map.with_index { |entry, index|
+      score = index >= window ? z_score(entry, data[0..index]).abs : 0
+
+      score > threshold ? 1 : 0
     }
   end
 
