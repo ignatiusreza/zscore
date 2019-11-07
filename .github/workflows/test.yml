@@ -11,6 +11,7 @@ jobs:
       matrix:
         ruby-version: [2.6.x]
         bundler-version: [2.0.1]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@master
@@ -19,6 +20,11 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Installing Native Dependencies
         run: |
@@ -29,8 +35,8 @@ jobs:
           gem install bundler --version=${{ matrix.bundler-version }}
           bundle install
 
-      - name: RSpec
-        run: rspec
+      - run: yarn install
+      - run: rspec
 
   jest:
     name: Jest
@@ -48,8 +54,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Yarn
-        run: yarn install
-
-      - name: Jest
-        run: yarn test
+      - run: yarn install
+      - run: yarn test
