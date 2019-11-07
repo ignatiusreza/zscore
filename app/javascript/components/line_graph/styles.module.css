@@ -16,10 +16,17 @@
   stroke-width: 1;
 }
 
+.line {
+  fill: none;
+  stroke: #0074d9;
+  stroke-width: 0.5;
+}
+
 .labels {
   font-size: 6px;
 }
 
+/* purgecss start ignore */
 .x-labels {
   transform: translate3d(0, 8px, 0);
   text-anchor: middle;
@@ -30,12 +37,6 @@
   text-anchor: end;
 }
 
-.line {
-  fill: none;
-  stroke: #0074d9;
-  stroke-width: 0.5;
-}
-
 .rect-highlight {
   fill: rgba(255, 0, 0, 0.3);
 }
@@ -44,3 +45,5 @@
   stroke: rgba(255, 0, 0, 0.3);
   stroke-width: 1;
 }
+
+/* purgecss end ignore */
