@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+import { State } from 'components/data_input';
 import LineGraph from 'components/line_graph';
 
-interface IrregularityGraphProps {
-  data: Array<number>;
-  threshold: number;
-}
-
-const IrregularityGraph: React.FC<IrregularityGraphProps> = ({ data, threshold }) => {
+const IrregularityGraph: React.FC<State> = ({ data, threshold }) => {
   const [highlights, setHighlights] = useState();
 
   useEffect(() => {
@@ -22,7 +18,13 @@ const IrregularityGraph: React.FC<IrregularityGraphProps> = ({ data, threshold }
       setHighlights(json.data);
     };
 
-    apiCall();
+    const timeoutId = setTimeout(() => {
+      if (threshold > 0) apiCall();
+    }, 300); // debounce, to avoid unneccessary api call during data input
+
+    return (): void => {
+      clearTimeout(timeoutId);
+    };
   }, [data]);
 
   return <LineGraph data={data} highlights={highlights} />;
