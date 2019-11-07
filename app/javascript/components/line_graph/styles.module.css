@@ -36,6 +36,11 @@
   stroke-width: 0.5;
 }
 
-.highlights {
+.rect-highlight {
   fill: rgba(255, 0, 0, 0.3);
+}
+
+.line-highlight {
+  stroke: rgba(255, 0, 0, 0.3);
+  stroke-width: 1;
 }

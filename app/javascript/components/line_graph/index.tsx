@@ -62,10 +62,27 @@ const LineGraph: React.FC<LineGraphProps> = ({ data, highlights }) => {
           ))}
         </g>
 
-        <g className={styles.highlights}>
-          {rects.map(([start, width], index) => (
-            <rect key={index} x={toScale(start)} width={toScale(width)} height={toScale(height)} />
-          ))}
+        <g>
+          {rects.map(([start, width], index) =>
+            width > 0 ? (
+              <rect
+                key={index}
+                x={toScale(start)}
+                width={toScale(width)}
+                height={toScale(height)}
+                className={styles.rectHighlight}
+              />
+            ) : (
+              <line
+                key={index}
+                x1={toScale(start)}
+                y1={0}
+                x2={toScale(start)}
+                y2={toScale(height)}
+                className={styles.lineHighlight}
+              />
+            ),
+          )}
         </g>
       </svg>
     </div>
