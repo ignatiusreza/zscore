@@ -404,6 +404,9 @@ exports[`<LineGraph> match snapshots for sample data 1`] = `
         10
       </text>
     </g>
+    <g
+      className="highlights"
+    />
   </svg>
 </div>
 `;

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { SAMPLE_DATA } from 'config/constants';
-import LineGraph from 'components/line_graph';
+import IrregularityGraph from 'components/irregularity_graph';
 
 const Root: React.FC = () => {
-  return <LineGraph data={SAMPLE_DATA} />;
+  return <IrregularityGraph data={SAMPLE_DATA} threshold={2} />;
 };
 
 export default Root;

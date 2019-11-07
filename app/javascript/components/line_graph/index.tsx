@@ -4,16 +4,33 @@ import styles from './styles.module.css';
 
 interface LineGraphProps {
   data: Array<number>;
+  highlights?: Array<number>;
+}
+
+interface Reducer {
+  memo: Array<[number, number]>;
+  prev?: number;
 }
 
 const PADDING = 10;
 const SCALE = 10;
 const toScale = (a: number): number => a * SCALE;
+const highlightReducer = ({ memo, prev }: Reducer, curr: number, index: number): Reducer => {
+  const lastGroup = memo[memo.length - 1];
 
-const LineGraph: React.FC<LineGraphProps> = ({ data }) => {
+  if (curr) {
+    if (!prev) memo.push([index, 0]);
+    else lastGroup[1]++;
+  }
+
+  return { memo, prev: curr };
+};
+
+const LineGraph: React.FC<LineGraphProps> = ({ data, highlights }) => {
   const width = data.length;
   const height = Math.max(...data) + 1;
   const points = data.map((point, index) => `${toScale(index)},${toScale(height - point)}`).join(' ');
+  const rects = highlights.reduce(highlightReducer, { memo: [] }).memo;
 
   return (
     <div className={styles.container}>
@@ -44,9 +61,19 @@ const LineGraph: React.FC<LineGraphProps> = ({ data }) => {
             </text>
           ))}
         </g>
+
+        <g className={styles.highlights}>
+          {rects.map(([start, width], index) => (
+            <rect key={index} x={toScale(start)} width={toScale(width)} height={toScale(height)} />
+          ))}
+        </g>
       </svg>
     </div>
   );
+};
+
+LineGraph.defaultProps = {
+  highlights: [],
 };
 
 export default LineGraph;
