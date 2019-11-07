@@ -1,24 +1,40 @@
-# README
+# Detecting irregularities using moving z-score
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Summary
 
-Things you may want to cover:
+[See it live!](https://zscore.herokuapp.com/)
 
-* Ruby version
+This project is an exercise in detecting irregularities in a time series using z-score.
 
-* System dependencies
+A simple UI is provided to assist testing the detecting logic, which allows user to type in:
 
-* Configuration
+- the `data` set,
+- minimum `threshold` for when a certain data point is considered irregular,
+- a `window` value, represents the minimum number of data which should be available, before a certain data point can be considered irregular
 
-* Database creation
+## Technical Details
 
-* Database initialization
+The code base is written in Ruby on Rails + React, as such to run it locally, you'll need the following installed:
 
-* How to run the test suite
+- Ruby: 2.6.x
+- Bundler: 2.0.x
+- Node: 12.x
+- Yarn: 1.19.x
 
-* Services (job queues, cache servers, search engines, etc.)
+Once the precondition is fulfilled, you'll need to install dependencies by running:
 
-* Deployment instructions
+```sh
+> bundle install
+```
 
-* ...
+and
+
+```sh
+> yarn
+```
+
+If both succeed without any issue, you can then run the server by;
+
+```sh
+> rails s
+```
