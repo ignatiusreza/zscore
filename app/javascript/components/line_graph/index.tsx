@@ -34,57 +34,66 @@ const LineGraph: React.FC<LineGraphProps> = ({ data, highlights }) => {
 
   return (
     <div className={styles.container}>
-      <svg
-        viewBox={`${-PADDING} 0 ${toScale(width) + PADDING} ${toScale(height) + PADDING}`}
-        width={toScale(width) + PADDING * 2}
-        height={toScale(height) + PADDING * 2}
-        className={styles.chart}
-      >
-        <polyline className={styles.line} points={points} />
+      <div className={styles.chart}>
+        <svg
+          viewBox={`${-PADDING} 0 ${toScale(width) + PADDING} ${toScale(height) + PADDING}`}
+          width={toScale(width) + PADDING * 2}
+          height={toScale(height) + PADDING * 2}
+        >
+          <polyline className={styles.line} points={points} />
 
-        <g className={styles.grid}>
-          <line x1="0" y1={toScale(height)} x2="0" y2="0"></line>
-          <line x1="0" y1={toScale(height)} x2={toScale(width)} y2={toScale(height)}></line>
-        </g>
+          <g>
+            {rects.map(([start, width], index) =>
+              width > 0 ? (
+                <rect
+                  key={index}
+                  x={toScale(start)}
+                  width={toScale(width)}
+                  height={toScale(height)}
+                  className={styles.rectHighlight}
+                />
+              ) : (
+                <line
+                  key={index}
+                  x1={toScale(start)}
+                  y1={0}
+                  x2={toScale(start)}
+                  y2={toScale(height)}
+                  className={styles.lineHighlight}
+                />
+              ),
+            )}
+          </g>
 
-        <g className={`${styles.labels} ${styles.xLabels}`}>
-          {Array.from(Array(width)).map((_, index) => (
-            <text key={index} x={toScale(index)} y={toScale(height)}>
-              {index}
-            </text>
-          ))}
-        </g>
-        <g className={`${styles.labels} ${styles.yLabels}`}>
-          {Array.from(Array(height)).map((_, index) => (
-            <text key={index} x="0" y={toScale(height - index)}>
-              {index}
-            </text>
-          ))}
-        </g>
-
-        <g>
-          {rects.map(([start, width], index) =>
-            width > 0 ? (
-              <rect
-                key={index}
-                x={toScale(start)}
-                width={toScale(width)}
-                height={toScale(height)}
-                className={styles.rectHighlight}
-              />
-            ) : (
-              <line
-                key={index}
-                x1={toScale(start)}
-                y1={0}
-                x2={toScale(start)}
-                y2={toScale(height)}
-                className={styles.lineHighlight}
-              />
-            ),
-          )}
-        </g>
-      </svg>
+          <line x1="0" y1={toScale(height)} x2={toScale(width)} y2={toScale(height)} className={styles.grid}></line>
+          <g className={`${styles.labels} ${styles.xLabels}`}>
+            {Array.from(Array(width)).map((_, index) => (
+              <text key={index} x={toScale(index)} y={toScale(height)}>
+                {index}
+              </text>
+            ))}
+          </g>
+        </svg>
+      </div>
+      <div className={styles.frozen}>
+        <div className={styles.whiteout}></div>
+        <svg
+          viewBox={`${-PADDING} 0 ${toScale(width) + PADDING} ${toScale(height) + PADDING}`}
+          width={toScale(width) + PADDING * 2}
+          height={toScale(height) + PADDING * 2}
+        >
+          <rect x={-PADDING} width={PADDING} height={toScale(height)} className={styles.whiteout} />
+          <rect x={-PADDING} y={toScale(height)} width={PADDING / 1.5} height={PADDING} className={styles.whiteout} />
+          <line x1="0" y1={toScale(height)} x2="0" y2="0" className={styles.grid}></line>
+          <g className={`${styles.labels} ${styles.yLabels}`}>
+            {Array.from(Array(height)).map((_, index) => (
+              <text key={index} x="0" y={toScale(height - index)}>
+                {index}
+              </text>
+            ))}
+          </g>
+        </svg>
+      </div>
     </div>
   );
 };
