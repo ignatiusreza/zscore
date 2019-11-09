@@ -1,13 +1,17 @@
 .form {
-  padding: 40px;
+  @apply p-4;
+
+  @screen md {
+    @apply pt-10 px-10;
+  }
 }
 
 .split {
   @apply flex;
-}
 
-.split > label {
-  @apply max-w-xs;
+  & > label {
+    @apply max-w-xs;
+  }
 }
 
 .threshold {
