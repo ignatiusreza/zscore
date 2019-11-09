@@ -1,19 +1,62 @@
 .container {
-  @apply w-full overflow-auto p-2;
+  @apply relative w-full overflow-hidden p-2;
 
   @screen md {
     @apply p-5;
   }
 }
 
-.chart {
-  @apply bg-white w-full h-auto px-2;
-
-  min-width: 728px;
+.chart,
+.frozen {
+  @apply px-2;
 
   @screen md {
     @apply px-5;
   }
+
+  & > svg {
+    @apply w-full h-auto;
+
+    min-width: 728px;
+  }
+}
+
+.chart {
+  @apply overflow-auto;
+}
+
+.frozen {
+  @apply absolute overflow-hidden pointer-events-none;
+
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  right: 0.5rem;
+
+  @screen md {
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+}
+
+div.whiteout {
+  @apply absolute bg-white;
+
+  top: 0;
+  left: -0.5rem;
+  width: 1rem;
+  bottom: 0;
+
+  @screen md {
+    left: -1.25rem;
+    width: 1.25rem;
+  }
+}
+
+rect.whiteout {
+  fill: white;
 }
 
 .grid {
