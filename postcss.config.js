@@ -13,13 +13,16 @@ module.exports = {
   plugins: [
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),
+    require('tailwindcss'),
     require('postcss-preset-env')({
+      stage: 2,
       autoprefixer: {
         flexbox: 'no-2009',
       },
-      stage: 3,
+      features: {
+        'nesting-rules': true,
+      },
     }),
-    require('tailwindcss'),
     ...(process.env.NODE_ENV === 'production' ? [purgecss] : []),
   ],
 };

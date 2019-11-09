@@ -1,13 +1,19 @@
 .container {
-  padding: 0 20px 20px;
-  width: 100%;
+  @apply w-full overflow-auto p-2;
+
+  @screen md {
+    @apply p-5;
+  }
 }
 
 .chart {
-  background: white;
-  padding: 0 20px;
-  width: 100%;
-  height: auto;
+  @apply bg-white w-full h-auto px-2;
+
+  min-width: 728px;
+
+  @screen md {
+    @apply px-5;
+  }
 }
 
 .grid {
