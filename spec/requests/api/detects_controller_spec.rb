@@ -8,7 +8,7 @@ describe Api::DetectsController do
       let(:expected) { %w[0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0].map(&:to_i) }
       let(:params) {
         {
-          threshold: 2,
+          threshold: 2.5,
           window: 7,
           data: %w[1 2 1 0 1 2 1 8 9 8 1 2 0 2 1 2 3 1 2 0 8 9 2],
         }

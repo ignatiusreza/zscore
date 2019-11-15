@@ -27,7 +27,7 @@ interface Action {
 
 const initialState: InputState = {
   data: SAMPLE_DATA.join(','),
-  threshold: '2',
+  threshold: '2.5',
   window: '7',
 };
 
