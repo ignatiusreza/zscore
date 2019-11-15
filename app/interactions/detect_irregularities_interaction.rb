@@ -11,14 +11,17 @@ class DetectIrregularitiesInteraction < ApplicationInteraction
   validates :window, numericality: { greater_than: 0 }
 
   def execute
-    data.map.with_index { |entry, index|
-      score = index >= window ? z_score(entry, data[0..index]).abs : 0
-
-      score > threshold ? 1 : 0
+    data.each.with_index.reduce([]) { |memo, (entry, index)|
+      score = index >= window ? z_score(entry, prev_data(memo, index)).abs : 0
+      memo << (score > threshold ? 1 : 0)
     }
   end
 
   private
+
+    def prev_data(memo, index)
+      data[0..index].select.with_index { |_, idx| index == idx || memo[idx].zero? }
+    end
 
     # ref: https://m.wikihow.com/Calculate-Z-Scores
     def z_score(entry, prev_data)
