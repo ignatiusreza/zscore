@@ -22,10 +22,6 @@ class DetectIrregularitiesInteraction < ApplicationInteraction
 
     # ref: https://m.wikihow.com/Calculate-Z-Scores
     def z_score(entry, prev_data)
-      ((entry - average(prev_data)) / prev_data.standard_deviation)
-    end
-
-    def average(data)
-      data.mean / data.length
+      (entry - prev_data.mean) / prev_data.standard_deviation
     end
 end
