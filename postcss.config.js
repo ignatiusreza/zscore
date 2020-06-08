@@ -6,7 +6,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [src, views],
 
   // custom extractor to match tailwind classes
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+  defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 });
 
 module.exports = {

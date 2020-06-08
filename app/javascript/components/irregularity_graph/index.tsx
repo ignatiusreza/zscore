@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { State } from 'components/data_input';
 import LineGraph from 'components/line_graph';
 
-const IrregularityGraph: React.FC<State> = props => {
+const IrregularityGraph: React.FC<State> = (props) => {
   const { data, threshold, window } = props;
   const [highlights, setHighlights] = useState();
 
