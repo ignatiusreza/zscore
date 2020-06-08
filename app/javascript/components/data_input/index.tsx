@@ -4,10 +4,6 @@ import { SAMPLE_DATA } from 'config/constants';
 
 import styles from './styles.module.css';
 
-interface DataInputProps {
-  render: Function;
-}
-
 interface InputState {
   data: string;
   threshold: string;
@@ -18,6 +14,10 @@ export interface State {
   data: Array<number>;
   threshold: number;
   window: number;
+}
+
+interface DataInputProps {
+  render: (state: State) => React.ReactElement;
 }
 
 interface Action {
@@ -46,7 +46,7 @@ function reducer(state: InputState, action: Action): InputState {
 
 function fromInputState(inputState: InputState): State {
   return {
-    data: inputState.data.split(',').map(value => Number(value) || 0),
+    data: inputState.data.split(',').map((value) => Number(value) || 0),
     threshold: Number(inputState.threshold) || 0,
     window: Number(inputState.window) || 0,
   };

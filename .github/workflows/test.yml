@@ -9,9 +9,9 @@ jobs:
 
     strategy:
       matrix:
-        ruby-version: [2.6.x]
-        bundler-version: [2.0.1]
-        node-version: [12.x]
+        ruby-version: [2.7.x]
+        bundler-version: [2.1.2]
+        node-version: [13.x]
 
     steps:
       - uses: actions/checkout@master
@@ -40,7 +40,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [13.x]
 
     steps:
       - uses: actions/checkout@v1
